@@ -1,40 +1,51 @@
 import React, {useState} from 'react';
-import {Button, Text} from 'native-base';
+import {Button, Text, Toast, Root} from 'native-base';
 import {View, TextInput, StyleSheet} from 'react-native';
-import Colors from 'react-native/Libraries/NewAppScreen/components/Colors';
+
 import {Palette} from '../Globals/Palette';
+import Colors from 'react-native/Libraries/NewAppScreen/components/Colors';
 
 const Login = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.textHeader}>Login Account</Text>
-      <TextInput
-        style={styles.textInput}
-        autoCompleteType={'username'}
-        autoFocus={true}
-        textContentType={'username'}
-        placeholder="UserName"
-        onChangeText={(text) => setUserName(text)}
-        defaultValue={userName}
-      />
-      <TextInput
-        style={styles.textInput}
-        autoCompleteType={'password'}
-        textContentType={'password'}
-        placeholder="Password"
-        onChangeText={(text) => setPassword(text)}
-        defaultValue={password}
-      />
+    <Root>
+      <View style={styles.container}>
+        <Text style={styles.textHeader}>Login Account</Text>
+        <TextInput
+          style={styles.textInput}
+          autoCompleteType={'username'}
+          autoFocus={true}
+          textContentType={'username'}
+          placeholder="UserName"
+          onChangeText={(text) => setUserName(text)}
+          defaultValue={userName}
+        />
+        <TextInput
+          style={styles.textInput}
+          autoCompleteType={'password'}
+          textContentType={'password'}
+          placeholder="Password"
+          onChangeText={(text) => setPassword(text)}
+          defaultValue={password}
+        />
 
-      <View>
-        <Button style={styles.buttonLogin} bordered>
-          <Text style={styles.loginText}>Log In</Text>
-        </Button>
+        <View>
+          <Button
+            style={styles.buttonLogin}
+            bordered
+            onPress={() =>
+              Toast.show({
+                text: 'Wrong password!',
+                buttonText: 'Okay',
+              })
+            }>
+            <Text style={styles.loginText}>Log In</Text>
+          </Button>
+        </View>
       </View>
-    </View>
+    </Root>
   );
 };
 

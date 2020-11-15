@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import Login from './Screens/Login';
 import {Palette} from './Globals/Palette';
 import AppLogo from './Components/Logo';
